@@ -3,21 +3,27 @@
   <thead>
     <tr>
       <th>title</th>
-
       <th>description</th>
-
       <th>actions</th>
     </tr>
   </thead>
   <tr>
     <% @articles.each do |article|%>
-    <tbody>
-      <td><%= article.title%></td>
-
-      <td><%= article.description%></td>
-
-      <td>jsjsj</td>
-    </tbody>
+      <tbody>
+        <td>
+          <%= article.title%>
+        </td>
+        <td>
+          <%= article.description%>
+        </td>
+        <td><%= link_to 'new' ,new_article_path%></td>
+        <td><%= link_to 'edit' ,edit_article_path(article) %></td>
+        <td><%= link_to 'show' ,article_path(article) %></td>
+        <td>
+          <%= link_to 'Delete' ,article_path(article) ,data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }
+            %>
+        </td>
+      </tbody>
     <%end%>
   </tr>
 </table>

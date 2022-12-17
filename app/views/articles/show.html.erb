@@ -1,3 +1,10 @@
 <h1>showing article details</h1>
-<p>Title: <%=@article.title %></p>
-<p>Description: <%=@article.description%></p>
+<p>Title: <%=@article.title %>
+</p>
+<p>Description: <%=@article.description%>
+</p>
+<td>
+  <%= link_to 'back to mama' ,articles_path %>
+  <%= link_to 'edit' ,article_path(@article) %>
+  <%= link_to 'am done', article_path(@article)  ,data: {turbo_method: :Delete,turbo_confirm: "Are yout sure"} %>
+</td>
