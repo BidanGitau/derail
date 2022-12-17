@@ -73,3 +73,6 @@ group :test do
 end
 
 gem "prettier", "~> 3.2"
+
+gem "cssbundling-rails", "~> 1.1"
+
