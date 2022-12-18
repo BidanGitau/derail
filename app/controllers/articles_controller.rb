@@ -41,11 +41,13 @@ class ArticlesController < ApplicationController
             render 'edit'
         end
     end
+    
      def destroy
-      
-            @article.destroy
-            redirect_to articles_path
-     end
+       
+        @article.destroy
+    
+        redirect_to articles_path, status: :see_other
+       end
 
      private
      def set_article

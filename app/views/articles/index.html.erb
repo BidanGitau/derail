@@ -1,29 +1,26 @@
-<h1>Article listing page</h1>
-<table>
-  <thead>
-    <tr>
-      <th>title</th>
-      <th>description</th>
-      <th>actions</th>
-    </tr>
-  </thead>
-  <tr>
-    <% @articles.each do |article|%>
-      <tbody>
-        <td>
-          <%= article.title%>
-        </td>
-        <td>
-          <%= article.description%>
-        </td>
-        <td><%= link_to 'new' ,new_article_path%></td>
-        <td><%= link_to 'edit' ,edit_article_path(article) %></td>
-        <td><%= link_to 'show' ,article_path(article) %></td>
-        <td>
-          <%= link_to 'Delete' ,article_path(article) ,data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }
-            %>
-        </td>
-      </tbody>
-    <%end%>
-  </tr>
-</table>
+<h4 class="text-center mt-4">Article listing page</h4>
+<div class="container-fluid">
+  <% @articles.each do |article|%>
+    <div class="card text-center shadow-lg bg-body rounded">
+      <div class="card-header fst-italic">
+        Featured On rail
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">
+          <%= link_to article.title ,article_path(article) ,class:'text-success'%>
+        </h5>
+        <p class="card-text">
+          <%=  truncate(article.description , length: 10)%>
+        </p>
+        <div class="d_flex">
+          <%= link_to 'Gview' ,article_path(article) ,class:'btn btn-success'%>
+          <%= link_to 'Edit' , edit_article_path(article) ,class:'btn btn-primary'%>
+          <%= button_to 'Delete' ,article_path(article) ,class:'btn btn-danger' , method: :delete%>
+        </div>
+      </div>
+      <div class="card-footer text-muted">
+        Posted <%= time_ago_in_words(article.created_at)%>
+      </div>
+    </div>
+  <%end%>
+</div>
