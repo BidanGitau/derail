@@ -1,0 +1,12 @@
+<% if @article.errors.any? %>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <% @article.errors.full_messages.each do |msg| %>
+            <strong>
+                <li>Holy guacamole! <%=msg%>
+                </li>
+            </strong>
+            <%end%>
+                <button type="button" class="btn-close btn btn-outline-danger" data-bs-dismiss="alert"
+                    aria-label="Close"></button>
+    </div>
+    <%end%>

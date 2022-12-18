@@ -1,10 +1,25 @@
-<h1>showing article details</h1>
-<p>Title: <%=@article.title %>
-</p>
-<p>Description: <%=@article.description%>
-</p>
-<td>
-  <%= link_to 'back to mama' ,articles_path %>
-  <%= link_to 'edit' ,article_path(@article) %>
-  <%= link_to 'am done', article_path(@article)  ,data: {turbo_method: :Delete,turbo_confirm: "Are yout sure"} %>
-</td>
+<div class="new_blog m-3">
+  <%= link_to 'go to mama' ,articles_path ,class:'btn btn-success'%>
+</div>
+<h4 class="text-center mt-4">
+  <%=@article.title%>
+</h4>
+<div class="container-fluid">
+  <div class="card text-center shadow-lg bg-body rounded">
+    <div class="card-header fst-italic">
+      Featured On rail
+    </div>
+    <div class="card-body">
+      <p class="card-text">
+        <%= simple_format(@article.description) %>
+      </p>
+      <div class="d-flex justify-content-center gap-3">
+        <%= link_to 'Edit' , edit_article_path(@article) ,class:'btn btn-primary'%>
+          <%= button_to'Delete' ,article_path(@article),class:'btn btn-danger' , method: :delete%>
+      </div>
+    </div>
+    <div class="card-footer text-muted">
+      Posted <%= time_ago_in_words(@article.created_at)%>
+    </div>
+  </div>
+</div>
