@@ -4,7 +4,7 @@
 </div>
 <div class="container-fluid">
   <% @articles.each do |article|%>
-    <div class="card text-center shadow-lg bg-body rounded">
+    <div class="card text-center shadow-lg bg-body rounded mb-1">
       <div class="card-header fst-italic">
         Featured On rail
       </div>
@@ -17,14 +17,13 @@
         </p>
         <div class="d-flex  justify-content-center gap-3 mb-3">
           <%= link_to 'Gview' ,article_path(article) ,class:'btn btn-success'%>
-            <%= link_to 'Edit' , edit_article_path(article) ,class:'btn btn-primary'%>
-              <div>
-                <%= button_to'Delete' ,article_path(article),class:'btn btn-danger' , method: :delete%>
-              </div>
+          <%= link_to 'Edit' , edit_article_path(article) ,class:'btn btn-primary'%>
+          <div>
+            <%= button_to'Delete' ,article_path(article),class:'btn btn-danger' , method: :delete%>
+          </div>
         </div>
         <div class="card-footer text-muted">
-          Posted <%= time_ago_in_words(article.created_at)%>
+          Posted <%= time_ago_in_words(article.created_at)%> and updated at about <%= time_ago_in_words(article.updated_at)%>
         </div>
       </div>
-    </div>
     <%end%>
