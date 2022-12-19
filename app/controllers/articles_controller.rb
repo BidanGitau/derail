@@ -10,11 +10,10 @@ class ArticlesController < ApplicationController
     end
 
       def create
-        @article=Article.new(article_params
-        
-        )
+        @article=Article.new(article_params)
+        @article.user=User.first
         if @article.save
-         flash[:notice]="wabe wabe"
+        flash[:notice]="wabe wabe"
         redirect_to article_path(@article)
              
          else
