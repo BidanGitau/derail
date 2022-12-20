@@ -1,4 +1,4 @@
-<%= render 'shared/errors' %>
+<%= render 'shared/errors' ,obj: @article %>
   <%= form_with(model: @article, data: { turbo: "false" }) do |f| %>
     <div class="mb-3">
       <%= f.label :title ,class:"form-label"%><br />
@@ -9,7 +9,7 @@
         <%= f.text_area :description ,class:"form-control",rows:3%>
     </div>
     <div class="mb-3">
-      <%= f.submit "Create Blog" ,class:"btn btn-outline-success"%>
+      <%= f.submit(@article.new_record? ? "Create Blog" : "Update_blog" ,class:"btn btn-outline-success")%>
         </p>
     </div>
     <%end%>

@@ -1,6 +1,6 @@
-<% if @article.errors.any? %>
+<% if obj.errors.any? %>
     <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <% @article.errors.full_messages.each do |msg| %>
+        <%obj.errors.full_messages.each do |msg| %>
             <strong>
                 <li>Holy guacamole! <%=msg%>
                 </li>
