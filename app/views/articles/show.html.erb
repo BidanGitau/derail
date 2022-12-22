@@ -3,6 +3,7 @@
 </div>
 <h4 class="text-center mt-4">
   <%=@article.title%>
+    <%= link_to gravatar_for(@article.user,size: 200),user_path(@article.user)%>
 </h4>
 <div class="container-fluid">
   <div class="card text-center shadow-lg bg-body rounded">

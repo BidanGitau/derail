@@ -1,8 +1,9 @@
 class ArticlesController < ApplicationController
     before_action :set_article , only:[:show,:edit,:update,:destroy]
      #provides to the above actions the method set_article
+     require 'will_paginate'
     def index
-        @articles=Article.all
+        @articles = Article.paginate(:page => params[:page], :per_page => 10)
     end
 
     def new
@@ -11,7 +12,8 @@ class ArticlesController < ApplicationController
 
       def create
         @article=Article.new(article_params)
-        @article.user=User.first
+        
+        @article.user=current_user
         if @article.save
         flash[:notice]="wabe wabe"
         redirect_to article_path(@article)

@@ -76,3 +76,4 @@ gem "prettier", "~> 3.2"
 
 gem "cssbundling-rails", "~> 1.1"
 
+gem 'will_paginate', '~> 3.1.7'

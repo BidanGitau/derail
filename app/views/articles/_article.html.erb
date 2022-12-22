@@ -5,7 +5,7 @@
     <% obj.each do |article|%>
         <div class="card text-center shadow-lg bg-body rounded mb-2">
             <div class="card-header fst-italic">
-                Featured On rail by <%= article.user.username%>
+                Featured On rail by <%= link_to article.user.username,user_path(article.user)%>
             </div>
             <div class="card-body">
                 <h5 class="card-title">

@@ -1,0 +1,15 @@
+<%= form_with(scope: :sessions,url: login_path, data: { turbo: "false" }) do |f| %>
+
+    <div class="mb-3">
+        <%= f.label :email ,class:"form-label"%><br />
+            <%= f.email_field :email ,class:"form-control"%>
+    </div>
+    <div class="mb-3">
+        <%= f.label :password ,class:"form-label"%><br />
+            <%= f.password_field :password ,class:"form-control"%>
+    </div>
+    <div class="mb-3">
+        <%= f.submit "LogIn" ,class:"btn btn-outline-success"%>
+            </p>
+    </div>
+    <%end%>
