@@ -41,9 +41,9 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
-                Profile [<%= current_user.username%>]
+                <%= "(Admin)" if current_user.admin? %> r Profile [<%= current_user.username%>]
               </a>
-              <ul class="dropdown-menu">
+              <ul class=" dropdown-menu">
                 <% if logged_in? %>
                   <%= link_to "view Profile" , user_path(current_user), class:"dropdown-item"%>
                     <%end%>

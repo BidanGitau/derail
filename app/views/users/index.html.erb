@@ -1,33 +1,35 @@
 <h3 class="text-center mt-4">
-    Bloggers
+  Bloggers
 </h3>
-
 <div class="container-fluid">
-    <% @users.each do |user|%>
-        <div class="card text-center shadow-lg bg-body rounded mb-2">
-            <div class="card-header fst-italic">
-                Featured On rail by <%= link_to user.username ,user_path(user) ,class:'text-success'%>
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">
-                    <%= link_to gravatar_for(user,size: 160) ,user_path(user)%>
-                </h5>
-                <p class="card-text">
-                    <%= pluralize(user.articles.count,"article")%>
-                </p>
-                <div class="d-flex  justify-content-center gap-3 mb-3">
-                    <%= link_to 'Gview' ,user_path(user) ,class:'btn btn-success'%>
-                        <% if logged_in? && user==current_user%>
-                            <%= link_to 'Edit profile ' ,edit_user_path(user) ,class:'btn btn-success'%>
-                                <%end%>
-
-                </div>
-                <div class="card-footer text-muted">
-                    user created <%= time_ago_in_words(user.created_at)%>
-                </div>
-            </div>
+  <% @users.each do |user|%>
+    <div class="card text-center shadow-lg bg-body rounded mb-2">
+      <div class="card-header fst-italic">
+        Featured On rail by <%= link_to user.username ,user_path(user) ,class:'text-success'%>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">
+          <%= link_to gravatar_for(user,size: 160) ,user_path(user)%>
+        </h5>
+        <p class="card-text">
+          <%= pluralize(user.articles.count,"article")%>
+        </p>
+        <div class="d-flex  justify-content-center gap-3 mb-3">
+          <%= link_to 'Gview' ,user_path(user) ,class:'btn btn-success'%>
+          <% if logged_in?%>
+            <%if user==current_user%>
+              <%= link_to 'Edit profile ' ,edit_user_path(user) ,class:'btn btn-success'%>
+            <%end%>
+            <%if current_user.admin?%>
+              <%= button_to 'Delete profile ' ,user_path(user) ,method: :delete,class:'btn
+                                                btn-success'%>
+            <%end%>
+          <%end%>
         </div>
-
-        <%end%>
-
+        <div class="card-footer text-muted">
+          user created <%= time_ago_in_words(user.created_at)%>
+        </div>
+      </div>
+    </div>
+  <%end%>
 </div>
