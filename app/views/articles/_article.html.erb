@@ -1,8 +1,10 @@
 <div class="new_blog  m-3 position-static">
     <%= link_to 'New Blog' ,new_article_path ,class:'btn btn-success'%>
 </div>
+
 <div class="container-fluid">
     <% obj.each do |article|%>
+
         <div class="card text-center shadow-lg bg-body rounded mb-2">
             <div class="card-header fst-italic">
                 Featured On rail by <%= link_to article.user.username,user_path(article.user)%>
@@ -16,10 +18,13 @@
                 </p>
                 <div class="d-flex  justify-content-center gap-3 mb-3">
                     <%= link_to 'Gview' ,article_path(article) ,class:'btn btn-success'%>
-                        <%= link_to 'Edit' , edit_article_path(article) ,class:'btn btn-primary'%>
-                            <div>
-                                <%= button_to'Delete' ,article_path(article),class:'btn btn-danger' , method: :delete%>
-                            </div>
+                        <% if logged_in? && article.user==current_user %>
+                            <%= link_to 'Edit' , edit_article_path(article) ,class:'btn btn-primary'%>
+                                <div>
+                                    <%= button_to'Delete' ,article_path(article),class:'btn btn-danger' , method:
+                                        :delete%>
+                                </div>
+                                <%end%>
                 </div>
                 <div class="card-footer text-muted">
                     Posted <%= time_ago_in_words(article.created_at)%> and updated at about <%=

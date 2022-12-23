@@ -17,11 +17,10 @@
                 </p>
                 <div class="d-flex  justify-content-center gap-3 mb-3">
                     <%= link_to 'Gview' ,user_path(user) ,class:'btn btn-success'%>
-                        <%= link_to 'Edit profile ' ,edit_user_path(user) ,class:'btn btn-success'%>
+                        <% if logged_in? && user==current_user%>
+                            <%= link_to 'Edit profile ' ,edit_user_path(user) ,class:'btn btn-success'%>
+                                <%end%>
 
-                            <div>
-
-                            </div>
                 </div>
                 <div class="card-footer text-muted">
                     user created <%= time_ago_in_words(user.created_at)%>

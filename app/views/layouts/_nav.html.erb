@@ -20,26 +20,41 @@
               Articles
             </a>
             <ul class="dropdown-menu">
-              <%= link_to "New Blog" , new_article_path , class:"dropdown-item"%>
-                <%= link_to "View Blogs" , articles_path , class:"dropdown-item"%>
-                  <%= link_to "Articles" , articles_path , class:"dropdown-item"%>
-                    <li>
-                      <hr class="dropdown-divider">
-                    </li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <% if logged_in? %>
+                <%= link_to "New Blog" , new_article_path , class:"dropdown-item"%>
+                  <%end%>
+                    <%= link_to "View Blogs" , articles_path , class:"dropdown-item"%>
+                      <%= link_to "Articles" , articles_path , class:"dropdown-item"%>
+                        <li>
+                          <hr class="dropdown-divider">
+                        </li>
+
             </ul>
           </li>
 
 
         </ul>
-
+        <!-- user profile -->
 
         <% if logged_in? %>
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item fw-semibold  text-capitalize">
-              <%= link_to current_user.username + "..in session" ,user_path(current_user) , class:"nav-link"%>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Profile [<%= current_user.username%>]
+              </a>
+              <ul class="dropdown-menu">
+                <% if logged_in? %>
+                  <%= link_to "view Profile" , user_path(current_user), class:"dropdown-item"%>
+                    <%end%>
+                      <%= link_to "Edit Profile" , edit_user_path(current_user) , class:"dropdown-item"%>
+
+                        <%= button_to "[ Delete Profile ]" , user_path(current_user) , method: :delete,class:"btn
+                          btn-outline-danger"%>
+              </ul>
             </li>
           </ul>
+
           <div class="d-flex">
 
 

@@ -3,7 +3,9 @@
 </h5>
 <%= gravatar_for @user %>
     <div class="text-center mt-4">
-        <%=link_to "Update Profile" , edit_user_path(@user),class:"btn btn-outline-success"%>
+        <% if logged_in? && @user==current_user%>
+            <%=link_to "Update Profile" , edit_user_path(@user),class:"btn btn-outline-success"%>
+                <%end%>
     </div>
     <h3 class="text-center mt-4">
         Blogs

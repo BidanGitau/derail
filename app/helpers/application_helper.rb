@@ -12,8 +12,4 @@ module ApplicationHelper
     end
 
 
-    def logged_in?
-        !!current_user
-        #turning the above function into a boolean
-    end
 end
