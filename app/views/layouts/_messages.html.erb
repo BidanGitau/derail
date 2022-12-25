@@ -1,5 +1,5 @@
 <% flash.each do |key,msg|%>
-  <div class="alert alert-success text-center" role="alert">
+  <div class=" alert alert-<%= key == " notice" ? "success" : "danger" %> text-center" role="alert">
     <%= msg %>
   </div>
 

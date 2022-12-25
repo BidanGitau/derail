@@ -40,13 +40,14 @@ class UsersController <ApplicationController
         flash[:error] = "Something went wrong"
         redirect_to articles_path
       end
+      
   end
     def destroy
       
       if @user.destroy
-        session[:user_id]=nil
+        session[:user_id]=nil if @user == current_user
         flash[:notice] = 'Account was successfully deleted.'
-        redirect_to root_path
+        redirect_to users_path
      
     end
     
@@ -65,7 +66,7 @@ class UsersController <ApplicationController
     end
 
     def require_same_user
-      if current_user != @user
+      if current_user != @user && !current_user.admin?
           flash[:alert]="can only edit delete own articles" 
           redirect_to @user
       end
