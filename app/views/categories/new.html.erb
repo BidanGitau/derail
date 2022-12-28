@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row align-content-center text-center">
+        <div class="col-12">
+            <h1 class="lead">create new Category</h1>
+            <%= render 'shared/errors' , obj: @category%>
+                <%= form_with(model: @category, data: { turbo: "false" }) do |f| %>
+                    <div class="mb-3 ">
+                        <%= f.label :name,"Category Name" ,class:"form-label"%><br />
+                            <%= f.text_field :name ,class:"form-control",placeholder:"enter name....." %>
+                    </div>
+                  
+                   
+                    <div class="mb-3">
+                        <%= f.submit class:"btn btn-outline-success"%>
+                    </div>
+                    <%end%>
+
+
+        </div>
+    </div>
+</div>
