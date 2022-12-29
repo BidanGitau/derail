@@ -5,6 +5,11 @@
   <%=@article.title%>
     <%= link_to gravatar_for(@article.user,size: 200),user_path(@article.user)%>
 </h4>
+<div class="text-center justify-content-center align-items-center fw-semibold badge rounded-pill bg-dark m-1 ">
+  <% if @article.categories.any?%>
+    <%= render @article.categories%>
+      <%end%>
+</div>
 <div class="container-fluid">
   <div class="card text-center shadow-lg bg-body rounded">
     <div class="card-header fst-italic">

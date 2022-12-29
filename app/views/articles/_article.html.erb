@@ -9,6 +9,12 @@
             <div class="card-header fst-italic">
                 Featured On rail by <%= link_to article.user.username,user_path(article.user)%>
             </div>
+            <div
+                class="text-center justify-content-center align-items-center fw-semibold badge rounded-pill bg-dark m-1 ">
+                <% if article.categories.any?%>
+                    <%= render article.categories%>
+                        <%end%>
+            </div>
             <div class="card-body">
                 <h5 class="card-title">
                     <%= link_to article.title ,article_path(article) ,class:'text-success'%>

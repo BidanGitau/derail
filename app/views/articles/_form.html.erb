@@ -1,15 +1,19 @@
 <%= render 'shared/errors' ,obj: @article %>
-  <%= form_with(model: @article, data: { turbo: "false" }) do |f| %>
-    <div class="mb-3">
-      <%= f.label :title ,class:"form-label"%><br />
-        <%= f.text_field :title ,class:"form-control",placeholder:"Currently having water ....." %>
-    </div>
-    <div class="mb-3">
-      <%= f.label :description ,class:"form-label"%><br />
-        <%= f.text_area :description ,class:"form-control",rows:3%>
-    </div>
-    <div class="mb-3">
-      <%= f.submit(@article.new_record? ? "Create Blog" : "Update_blog" ,class:"btn btn-outline-success")%>
-        </p>
-    </div>
-    <%end%>
+<%= form_with(model: @article, data: { turbo: "false" }) do |f| %>
+  <div class="mb-3">
+    <%= f.label :title ,class:"form-label"%><br />
+    <%= f.text_field :title ,class:"form-control",placeholder:"Currently having water ....." %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :description ,class:"form-label"%><br />
+    <%= f.text_area :description ,class:"form-control",rows:3%>
+  </div>
+  <div class="mb-3">
+    <%= f.label :category ,class:"form-label"%><br />
+    <%= f.collection_select(:category_ids, Category.order(:id), :id, :name, {prompt: "Please Select a Sector"} , {multiple: true,class:'form-select multiple'})%>
+  </div>
+  <div class="mb-3">
+    <%= f.submit(@article.new_record? ? "Create Blog" : "Update_blog" ,class:"btn btn-outline-success")%>
+  </p>
+</div>
+<%end%>
