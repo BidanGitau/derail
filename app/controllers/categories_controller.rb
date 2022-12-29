@@ -17,8 +17,23 @@ class CategoriesController < ApplicationController
         render "new"
       end
     end
+
     def show
       @category=Category.find(params[:id])  
+      @categories_article=@category.articles
+    end
+    def edit
+      @category=Category.find(params[:id])  
+    end
+    def update
+      @category=Category.find(params[:id])
+        if @category.update(category_params)
+          flash[:success] = "Object was successfully updated"
+          redirect_to @category
+        else
+          flash[:error] = "Something went wrong"
+          render 'edit'
+        end
     end
     
     private
